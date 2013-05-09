@@ -1,0 +1,45 @@
+[user]
+name = Eli Collins
+email = eli@cloudera.com
+
+[core]
+pager = less -R
+#editor = emacs
+
+#[commit]
+#template = /home/eli/.gitmessage.txt
+
+[diff]
+noprefix = true
+#mnemonicprefix = true
+	
+[color]
+ui = auto
+branch = auto
+diff = auto
+status = auto
+
+#May need to blow away .git/rr-cache
+#[rerere]
+#enabled = true
+
+[alias]
+lol = log --pretty=oneline --abbrev-commit --graph --decorate --color
+lof = log --pretty=fuller
+unstage = reset HEAD
+fb = pull --rebase
+cp = cherry-pick -x
+co = checkout
+
+[sendemail]
+smtpserver = smtp.gmail.com
+smtpuser = eli@cloudera.com
+smtpencryption = ssl
+
+[push]
+default = tracking
+
+[branch "trunk"]
+remote = hadoop-common
+merge = trunk
+rebase = true

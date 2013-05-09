@@ -1,0 +1,16 @@
+
+" syntax off
+
+" nowrap
+" backspace indent,eol,start
+set backspace=2
+
+" fixed delete key
+" entered using Ctrl-V Ctrl-? Ctrl-V Ctrl-H
+" however now backspace doesn't go back in command mode
+" inoremap ^?
+
+" source ~/cscope_maps.vim
+set cmdheight=4
+set nofsync
+

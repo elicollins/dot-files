@@ -1,0 +1,201 @@
+(setq inhibit-splash-screen t)
+
+(setq default-directory "/home/eli")
+(setq load-path (cons "~/emacs" load-path))
+
+;(load "~/emacs/haskell-mode-2.4/haskell-site-file")
+;(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
+;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
+;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+
+
+;(global-set-key "\^xh" 'help-for-help)
+;(global-set-key "\^h"  'backward-delete-char-untabify)
+
+(setq require-final-newline t)
+
+(global-set-key "\C-x\C-b" 'electric-buffer-list)
+
+;; you can have GNU, K&R, BSD, C++, Whitesmith
+;(setq default-c-style 'K&R)
+
+(put 'eval-expression 'disabled nil)
+(put 'downcase-region 'disabled t)      ;; It's very annoying to do this
+(put 'upcase-region 'disabled t)        ;; by accident!
+
+(defun linux-c-mode ()
+  "C mode with adjusted defaults for use with the Linux kernel."
+  (interactive)
+  ;; grr - still does not seem to work properly
+  (make-variable-buffer-local 'tab-width)
+  (make-variable-buffer-local 'c-basic-offset)
+  (c-mode)
+;  (if window-system
+;         (change-mode 'passive))
+  (make-variable-buffer-local 'version-control)
+  (setq version-control 't)
+  (c-set-style "linux")
+  (setq tab-width 8)
+  (setq c-basic-offset 8))
+
+(push '(".*/linux.*/.*\\.[ch]\\'" . linux-c-mode) auto-mode-alist)
+(push '(".*/linux.*/.*\\.[ch]\\(-[a-z]+\\)?\\'" . linux-c-mode) auto-mode-alist)
+
+;; Python mode
+;(setq load-path (cons "~/local/lisp" load-path))
+;(setq auto-mode-alist
+;      (cons '("\\.py$" . python-mode) auto-mode-alist))
+;(setq interpreter-mode-alist
+  ;    (cons '("python" . python-mode)
+   ;         interpreter-mode-alist))
+;(autoload 'python-mode "python-mode" "Python editing mode." t)
+
+(setq c-basic-offset 2)
+;; Don't indent with tabs
+(custom-set-variables
+  '(indent-tabs-mode nil)
+)
+
+(setq scroll-step 1)
+(setq scroll-conservatively 1)
+(setq scroll-up-aggressively .00000001)
+(setq scroll-down-aggressively .00000001)
+
+(column-number-mode)
+(menu-bar-mode nil)
+(tool-bar-mode nil)
+(scroll-bar-mode nil)
+
+;(set-cursor-color "white")
+;(set-foreground-color "white")
+;(set-background-color "Linen")
+(set-background-color "Lavender")
+
+; color terms
+;(ansi-color-for-comint-mode-on)
+
+;; change font-lock colors
+
+;(defun flcolors-setup() 
+;  (set-face-foreground font-lock-comment-face "sandybrown") 
+;;(set-face-foreground font-lock-type-face "cadetblue1") 
+;  (set-face-foreground font-lock-string-face "peachpuff") 
+;;(set-face-foreground font-lock-variable-name-face "cadetblue2") 
+;  (set-face-foreground font-lock-keyword-face "LightBlue") 
+;  (remove-hook 'font-lock-mode-hook 'flcolors-setup))
+
+(defun flcolors-setup() 
+;;   (set-face-foreground font-lock-type-face "white") 
+;;   (set-face-foreground font-lock-variable-name-face "white") 
+;;   (set-face-foreground font-lock-keyword-face "white") 
+;;   (set-face-foreground font-lock-function-name-face "white") 
+;;   (set-face-foreground font-lock-constant-face "dim grey") 
+;;   (set-face-foreground font-lock-builtin-face "white") 
+   (set-face-foreground font-lock-string-face "coral3") 
+   (set-face-foreground font-lock-comment-face "dim grey") 
+   (set-face-foreground font-lock-doc-face "dim grey") 
+   (remove-hook 'font-lock-mode-hook 'flcolors-setup)
+)
+
+(add-hook 'font-lock-mode-hook 'flcolors-setup)
+;(setq-default show-trailing-whitespace t)
+(global-font-lock-mode t)
+
+(require 'xcscope)
+(setq cscope-do-not-update-database t)
+
+;(load-library "xscheme")
+
+; Use list-fontsets to see what's available
+; Fontset: -*-*-*-*-*-*-*-*-*-*-*-*-fontset-default
+; Fontset: -*-fixed-medium-r-normal-*-16-*-*-*-*-*-fontset-standard
+; Fontset: -unknown-DejaVu Sans Mono-normal-normal-normal-*-20-*-*-*-m-0-fontset-startup
+
+; Use set-default-font to set the font, it auto-completes fonts
+;(set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-20-*-*-*-m-0-fontset-startup")
+; Set font size (100, 120 are good values)
+(set-face-attribute 'default nil :height 120)
+
+; Works around slow loading due to fonts issue
+;(modify-frame-parameters nil '((wait-for-wm . nil)))
+
+; 
+; these are slow instead put the following in ~/.Xdefaults and 'xrdb
+; -merge $HOME/.Xdefaults'...
+; Emacs.font: -misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-1
+;(set-default-font "9x15")
+;(set-default-font "-misc-fixed-medium-r-*-*-15-*-*-*-*-*-*-*")
+;(set-default-font "-misc-fixed-medium-r-normal--15-140-75-75-c-90-iso8859-1")
+
+;(load-library "p4")
+;(add-hook 'p4-mode-hook
+;          (lambda () (set (make-local-variable 'backup-inhibited) t)))
+
+;(custom-set-variables
+  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
+  ;; Your init file should contain only one such instance.
+; '(p4-executable "/exit14/home/mts/bin/p4")
+; '(p4-follow-symlinks t))
+
+;; Mousewheel
+(defun sd-mousewheel-scroll-up (event)
+  "Scroll window under mouse up by five lines."
+  (interactive "e")
+  (let ((current-window (selected-window)))
+    (unwind-protect
+        (progn 
+          (select-window (posn-window (event-start event)))
+          (scroll-up 5))
+      (select-window current-window))))
+
+(defun sd-mousewheel-scroll-down (event)
+  "Scroll window under mouse down by five lines."
+  (interactive "e")
+  (let ((current-window (selected-window)))
+    (unwind-protect
+        (progn 
+          (select-window (posn-window (event-start event)))
+          (scroll-down 5))
+      (select-window current-window))))
+
+(global-set-key (kbd "<mouse-5>") 'sd-mousewheel-scroll-up)
+(global-set-key (kbd "<mouse-4>") 'sd-mousewheel-scroll-down)
+
+
+(require 'ido)
+(ido-mode t)
+
+(defun my-java-mode-hook ()
+  (setq c-basic-offset 2)
+  (setq ident-tabs-mode nil)
+  (font-lock-mode)
+  (line-number-mode t)
+)
+(add-hook 'java-mode-hook 'my-java-mode-hook)
+
+;; (defun ido-find-file-in-tag-files ()
+;;   (interactive)
+;;   (save-excursion
+;;     (let ((enable-recursive-minibuffers t))
+;;       (visit-tags-table-buffer))
+;;     (find-file
+;;      (expand-file-name
+;;       (ido-completing-read
+;;        "Project file: " (tags-table-files) nil t)))))
+;; (global-set-key [(control ?x) ?g] 'ido-find-file-in-tag-files)
+
+(defun jw ()
+   "Convert <proj>-<num> to {(jh|jc):<proj>-<num>}"
+   (interactive)
+   (save-excursion
+     (progn 
+       (goto-char 0)
+       (replace-regexp "\\(cdh\\|cloudera\\|kitchen\\)-[0-9]+" "{jc:\\\&}")
+       (goto-char 0)
+       (replace-regexp "\\(\\(hadoop\\|hdfs\\|mr\\|mapreduce\\)-[0-9]+\\)" 
+                       "{jh:\\\&}")
+       (goto-char 0)
+       (replace-string "{jh:mr-" "{jh:mapreduce-"))))
+
+(setq x-select-enable-clipboard t)
+(setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
