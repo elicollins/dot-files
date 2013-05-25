@@ -1,7 +1,11 @@
 (setq inhibit-splash-screen t)
 
 (setq default-directory "/home/eli")
-(setq load-path (cons "~/emacs" load-path))
+
+(add-to-list 'load-path "~/emacs/" t)
+(add-to-list 'load-path "~/toolchain/go/misc/emacs/" t)
+
+(require 'go-mode-load)
 
 ;(load "~/emacs/haskell-mode-2.4/haskell-site-file")
 ;(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
