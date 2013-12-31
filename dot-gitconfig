@@ -43,3 +43,9 @@ default = tracking
 remote = hadoop-common
 merge = trunk
 rebase = true
+
+[branch "master"]
+remote = origin
+merge = master
+rebase = true
+

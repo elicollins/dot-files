@@ -2,16 +2,13 @@
 
 (setq default-directory "/home/eli")
 
-(add-to-list 'load-path "~/emacs/" t)
 (add-to-list 'load-path "~/toolchain/go/misc/emacs/" t)
-
 (require 'go-mode-load)
 
 ;(load "~/emacs/haskell-mode-2.4/haskell-site-file")
 ;(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
 ;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-
+;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 
 ;(global-set-key "\^xh" 'help-for-help)
 ;(global-set-key "\^h"  'backward-delete-char-untabify)
@@ -105,6 +102,8 @@
 ;(setq-default show-trailing-whitespace t)
 (global-font-lock-mode t)
 
+;Get xscope from cscope-el package now
+;(add-to-list 'load-path "~/emacs/" t)
 (require 'xcscope)
 (setq cscope-do-not-update-database t)
 
